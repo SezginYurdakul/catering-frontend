@@ -1,38 +1,38 @@
-# Catering Frontend - Proje Planlama ve Yapılacaklar Listesi
+# Catering Frontend - Project Planning and Todo List
 
-## 🎯 Proje Genel Bakış
+## 🎯 Project Overview
 
-Bu proje, Catering API'sini kullanan modern bir React frontend uygulamasıdır.
+This project is a modern React frontend application using the Catering API.
 
-### Teknoloji Stack
+### Technology Stack
 - **Framework:** React 18
-- **Dil:** TypeScript
+- **Language:** TypeScript
 - **Build Tool:** Vite
 - **Styling:** Tailwind CSS
 - **State Management:** React Context API + Hooks
 - **HTTP Client:** Axios
 - **Routing:** React Router v6
-- **Form Yönetimi:** React Hook Form + Zod (validation)
-- **UI Components:** Headless UI (dropdown, modal, vb.)
+- **Form Management:** React Hook Form + Zod (validation)
+- **UI Components:** Headless UI (dropdown, modal, etc.)
 - **Icons:** Heroicons
 - **Date Handling:** date-fns
 
 ---
 
-## 📋 Detaylı Yapılacaklar Listesi
+## 📋 Detailed Todo List
 
-### Faz 1: Proje Kurulumu ve Temel Yapı
+### Phase 1: Project Setup and Basic Structure
 
-#### 1.1 Proje İnşası
-- [ ] Vite + React + TypeScript projesi oluştur
-- [ ] Tailwind CSS kurulumu ve yapılandırması
-- [ ] ESLint ve Prettier yapılandırması
-- [ ] Klasör yapısını oluştur
+#### 1.1 Project Initialization
+- [x] Create Vite + React + TypeScript project
+- [x] Tailwind CSS setup and configuration
+- [x] ESLint and Prettier configuration
+- [x] Create folder structure
 
-#### 1.2 Klasör Yapısı
+#### 1.2 Folder Structure
 ```
 src/
-├── api/                    # API servis katmanı
+├── api/                    # API service layer
 │   ├── client.ts          # Axios instance + interceptors
 │   ├── auth.service.ts    # Authentication API calls
 │   ├── facility.service.ts
@@ -40,7 +40,7 @@ src/
 │   ├── tag.service.ts
 │   └── employee.service.ts
 ├── components/             # Reusable components
-│   ├── common/            # Button, Input, Card, Modal, vb.
+│   ├── common/            # Button, Input, Card, Modal, etc.
 │   ├── layout/            # Layout, Navbar, Sidebar
 │   └── forms/             # Form components
 ├── context/               # React Context
@@ -49,7 +49,7 @@ src/
 │   ├── useAuth.ts
 │   ├── useApi.ts
 │   └── usePagination.ts
-├── pages/                 # Sayfa componentleri
+├── pages/                 # Page components
 │   ├── auth/
 │   │   └── Login.tsx
 │   ├── dashboard/
@@ -86,39 +86,39 @@ src/
 
 ---
 
-### Faz 2: Core Yapı ve Authentication
+### Phase 2: Core Structure and Authentication
 
 #### 2.1 Environment Configuration
-- [ ] `.env.example` dosyası oluştur
-- [ ] API base URL yapılandırması
-- [ ] Environment variables setup
+- [x] Create `.env.example` file
+- [x] API base URL configuration
+- [x] Environment variables setup
 
-**Örnek .env:**
+**Example .env:**
 ```env
 VITE_API_BASE_URL=http://localhost:8080
 ```
 
 #### 2.2 API Client Setup
-- [ ] Axios instance oluştur
-- [ ] Request interceptor (JWT token ekleme)
-- [ ] Response interceptor (error handling)
-- [ ] Token yönetimi (localStorage)
+- [x] Create Axios instance
+- [x] Request interceptor (JWT token addition)
+- [x] Response interceptor (error handling)
+- [x] Token management (localStorage)
 
-**Özellikler:**
-- Otomatik JWT token ekleme
-- 401 hatalarında logout
+**Features:**
+- Automatic JWT token addition
+- Logout on 401 errors
 - Global error handling
 - Loading states
 
 #### 2.3 Authentication
-- [ ] Auth Context oluştur
-- [ ] Login servisi
-- [ ] Token storage ve retrieval
-- [ ] Protected routes
-- [ ] Auto logout on token expiry
-- [ ] Login sayfası UI
+- [x] Create Auth Context
+- [x] Login service
+- [x] Token storage and retrieval
+- [x] Protected routes
+- [x] Auto logout on token expiry
+- [x] Login page UI
 
-**Auth Context Fonksiyonları:**
+**Auth Context Functions:**
 - `login(username, password)`
 - `logout()`
 - `isAuthenticated`
@@ -126,7 +126,7 @@ VITE_API_BASE_URL=http://localhost:8080
 
 ---
 
-### Faz 3: Type Definitions
+### Phase 3: Type Definitions
 
 #### 3.1 API Response Types
 ```typescript
@@ -150,12 +150,12 @@ interface PaginatedResponse<T> {
 ```
 
 #### 3.2 Resource Types
-- [ ] Facility types
-- [ ] Location types
-- [ ] Tag types
-- [ ] Employee types
+- [x] Facility types
+- [x] Location types
+- [x] Tag types
+- [x] Employee types
 
-**Facility Type Örneği:**
+**Facility Type Example:**
 ```typescript
 interface Location {
   id: number;
@@ -188,80 +188,80 @@ interface FacilityFormData {
 
 ---
 
-### Faz 4: API Services
+### Phase 4: API Services
 
 #### 4.1 Auth Service
-- [ ] `login(username, password)` → JWT token
-- [ ] Token storage helpers
+- [x] `login(username, password)` → JWT token
+- [x] Token storage helpers
 
 #### 4.2 Facility Service
-- [ ] `getFacilities(page?, per_page?)` → Paginated list
-- [ ] `getFacilityById(id)` → Single facility
-- [ ] `searchFacilities(query, filter, operator)` → Filtered list
-- [ ] `createFacility(data)` → New facility
-- [ ] `updateFacility(id, data)` → Updated facility
-- [ ] `deleteFacility(id)` → Success
+- [x] `getFacilities(page?, per_page?)` → Paginated list
+- [x] `getFacilityById(id)` → Single facility
+- [x] `searchFacilities(query, filter, operator)` → Filtered list
+- [x] `createFacility(data)` → New facility
+- [x] `updateFacility(id, data)` → Updated facility
+- [x] `deleteFacility(id)` → Success
 
 #### 4.3 Location Service
-- [ ] `getLocations()` → All locations
-- [ ] `getLocationById(id)` → Single location
-- [ ] `createLocation(data)` → New location
-- [ ] `updateLocation(id, data)` → Updated location
-- [ ] `deleteLocation(id)` → Success
+- [x] `getLocations()` → All locations
+- [x] `getLocationById(id)` → Single location
+- [x] `createLocation(data)` → New location
+- [x] `updateLocation(id, data)` → Updated location
+- [x] `deleteLocation(id)` → Success
 
 #### 4.4 Tag Service
-- [ ] `getTags()` → All tags
-- [ ] `getTagById(id)` → Single tag
-- [ ] `createTag(data)` → New tag
-- [ ] `updateTag(id, data)` → Updated tag
-- [ ] `deleteTag(id)` → Success
+- [x] `getTags()` → All tags
+- [x] `getTagById(id)` → Single tag
+- [x] `createTag(data)` → New tag
+- [x] `updateTag(id, data)` → Updated tag
+- [x] `deleteTag(id)` → Success
 
 #### 4.5 Employee Service
-- [ ] `getEmployees()` → All employees
-- [ ] `getEmployeeById(id)` → Single employee
-- [ ] `getEmployeesByFacility(facilityId)` → Facility employees
-- [ ] `createEmployee(data)` → New employee
-- [ ] `updateEmployee(id, data)` → Updated employee
-- [ ] `deleteEmployee(id)` → Success
+- [x] `getEmployees()` → All employees
+- [x] `getEmployeeById(id)` → Single employee
+- [x] `getEmployeesByFacility(facilityId)` → Facility employees
+- [x] `createEmployee(data)` → New employee
+- [x] `updateEmployee(id, data)` → Updated employee
+- [x] `deleteEmployee(id)` → Success
 
 ---
 
-### Faz 5: Reusable UI Components
+### Phase 5: Reusable UI Components
 
 #### 5.1 Common Components
-- [ ] **Button** - Primary, secondary, danger variants
-- [ ] **Input** - Text, number, select
-- [ ] **Card** - Container component
-- [ ] **Modal** - Confirmation, forms
+- [x] **Button** - Primary, secondary, danger variants
+- [x] **Input** - Text, number, select
+- [x] **Card** - Container component
+- [x] **Modal** - Confirmation, forms
 - [ ] **Alert** - Success, error, warning, info
-- [ ] **LoadingSpinner** - Global ve local loading states
-- [ ] **Pagination** - Page navigation
+- [x] **LoadingSpinner** - Global and local loading states
+- [x] **Pagination** - Page navigation
 - [ ] **SearchBar** - Input with search icon
-- [ ] **Badge** - Tags için renkli badges
-- [ ] **EmptyState** - Data yok mesajı
+- [ ] **Badge** - Colored badges for tags
+- [x] **EmptyState** - No data message
 
 #### 5.2 Layout Components
-- [ ] **Layout** - Main app layout
-- [ ] **Navbar** - Top navigation bar
-- [ ] **Sidebar** - Side navigation menu
+- [x] **Layout** - Main app layout
+- [x] **Navbar** - Top navigation bar
+- [x] **Sidebar** - Side navigation menu
 - [ ] **Breadcrumb** - Navigation breadcrumb
 
 #### 5.3 Form Components
 - [ ] **FormField** - Label + Input + Error
-- [ ] **MultiSelect** - Tag selection için
+- [ ] **MultiSelect** - For tag selection
 - [ ] **LocationSelect** - Location dropdown
 - [ ] **ValidationError** - Error message display
 
 ---
 
-### Faz 6: Custom Hooks
+### Phase 6: Custom Hooks
 
 #### 6.1 useAuth Hook
-- [ ] `user` state
-- [ ] `loading` state
-- [ ] `login` function
-- [ ] `logout` function
-- [ ] `isAuthenticated` boolean
+- [x] `user` state
+- [x] `loading` state
+- [x] `login` function
+- [x] `logout` function
+- [x] `isAuthenticated` boolean
 
 #### 6.2 useApi Hook
 - [ ] Generic API call wrapper
@@ -269,7 +269,7 @@ interface FacilityFormData {
 - [ ] Error handling
 - [ ] Success callbacks
 
-**Kullanım:**
+**Usage:**
 ```typescript
 const { data, loading, error, execute } = useApi(
   facilityService.getFacilities
@@ -283,30 +283,30 @@ const { data, loading, error, execute } = useApi(
 - [ ] Next/prev handlers
 
 #### 6.4 useDebounce Hook
-- [ ] Search input için debounce
+- [ ] Debounce for search input
 
 ---
 
-### Faz 7: Sayfalar (Pages)
+### Phase 7: Pages
 
 #### 7.1 Authentication Pages
-- [ ] **Login Page**
+- [x] **Login Page**
   - Username/password form
   - JWT token storage
   - Error handling
   - Redirect to dashboard on success
 
 #### 7.2 Dashboard
-- [ ] **Dashboard Page**
-  - Toplam facility sayısı
-  - Toplam location sayısı
-  - Toplam tag sayısı
-  - Toplam employee sayısı
-  - Son eklenen facilities listesi
-  - İstatistik kartları
+- [x] **Dashboard Page**
+  - Total facility count
+  - Total location count
+  - Total tag count
+  - Total employee count
+  - Recent facilities list
+  - Statistics cards
 
 #### 7.3 Facility Pages
-- [ ] **Facility List Page**
+- [x] **Facility List Page**
   - Paginated table view
   - Search functionality (query, filter, operator)
   - Filter by city
@@ -316,73 +316,73 @@ const { data, loading, error, execute } = useApi(
   - Delete button → Confirmation modal
   - View details button → Detail page
 
-- [ ] **Facility Detail Page**
-  - Facility bilgileri
-  - Location detayı
-  - Tags listesi
-  - Employee listesi (bu facility'e ait)
-  - Edit ve Delete butonları
+- [x] **Facility Detail Page**
+  - Facility information
+  - Location details
+  - Tags list
+  - Employee list (for this facility)
+  - Edit and Delete buttons
 
-- [ ] **Facility Form Modal**
+- [x] **Facility Form Modal**
   - Name input (required)
   - Location select (required)
   - Tag multi-select (optional)
-  - Tag name input (optional, yeni tag oluştur)
+  - Tag name input (optional, create new tag)
   - Validation
   - Submit handling
 
 #### 7.4 Location Pages
-- [ ] **Location List Page**
-  - Tüm locations listesi
+- [x] **Location List Page**
+  - All locations list
   - Create button
   - Edit button
-  - Delete button (facility yoksa)
-  - Usage count (kaç facility kullanıyor)
+  - Delete button (if no facilities)
+  - Usage count (how many facilities using)
 
-- [ ] **Location Form Modal**
+- [x] **Location Form Modal**
   - City input (required)
   - Latitude input (required, number)
   - Longitude input (required, number)
   - Validation
 
 #### 7.5 Tag Pages
-- [ ] **Tag List Page**
-  - Tüm tags listesi
+- [x] **Tag List Page**
+  - All tags list
   - Create button
   - Edit button
-  - Delete button (facility ilişkisi yoksa)
+  - Delete button (if no facility relations)
   - Usage count
 
-- [ ] **Tag Form Modal**
+- [x] **Tag Form Modal**
   - Name input (required)
   - Validation
 
 #### 7.6 Employee Pages
-- [ ] **Employee List Page**
-  - Tüm employees listesi
+- [x] **Employee List Page**
+  - All employees list
   - Filter by facility
   - Create button
   - Edit button
   - Delete button
 
-- [ ] **Employee Form Modal**
+- [x] **Employee Form Modal**
   - Name input (required)
   - Facility select (required)
-  - Position input
+  - Address fields (street, house number, postcode, city, country)
   - Other employee fields
   - Validation
 
 ---
 
-### Faz 8: Routing
+### Phase 8: Routing
 
 #### 8.1 Route Configuration
-- [ ] Public routes (Login)
-- [ ] Protected routes (Dashboard, vb.)
-- [ ] 404 Not Found page
-- [ ] Redirect logic
+- [x] Public routes (Login)
+- [x] Protected routes (Dashboard, etc.)
+- [x] 404 Not Found page
+- [x] Redirect logic
 
-**Route Yapısı:**
+**Route Structure:**
 ```typescript
 / → Login (public)
 /dashboard → Dashboard (protected)
@@ -394,80 +394,80 @@ const { data, loading, error, execute } = useApi(
 ```
 
 #### 8.2 Protected Route Component
-- [ ] Auth check
-- [ ] Redirect to login if not authenticated
-- [ ] Loading state
+- [x] Auth check
+- [x] Redirect to login if not authenticated
+- [x] Loading state
 
 ---
 
-### Faz 9: State Management
+### Phase 9: State Management
 
 #### 9.1 Global State
-- [ ] Authentication state (Context)
+- [x] Authentication state (Context)
 - [ ] Theme state (optional, dark mode)
 
 #### 9.2 Local State
-- [ ] Component-level state (useState)
-- [ ] Form state (React Hook Form)
-- [ ] API call state (custom hooks)
+- [x] Component-level state (useState)
+- [x] Form state (React Hook Form)
+- [x] API call state (custom hooks)
 
 ---
 
-### Faz 10: Form Handling & Validation
+### Phase 10: Form Handling & Validation
 
 #### 10.1 Validation Library Setup
-- [ ] Zod schema definitions
-- [ ] React Hook Form integration
+- [x] Zod schema definitions
+- [x] React Hook Form integration
 
 #### 10.2 Validation Rules
-- [ ] Facility form validation
+- [x] Facility form validation
   - Name: required, min 3 chars
   - Location: required
 
-- [ ] Location form validation
+- [x] Location form validation
   - City: required, min 2 chars
   - Latitude: required, number, -90 to 90
   - Longitude: required, number, -180 to 180
 
-- [ ] Tag form validation
+- [x] Tag form validation
   - Name: required, min 2 chars
 
-- [ ] Employee form validation
+- [x] Employee form validation
   - Name: required
   - Facility: required
 
 ---
 
-### Faz 11: Error Handling
+### Phase 11: Error Handling
 
 #### 11.1 API Error Handling
-- [ ] Network errors
-- [ ] 401 Unauthorized → Logout
-- [ ] 404 Not Found → Show message
-- [ ] 409 Conflict → Show resource in use message
-- [ ] 422 Validation errors → Show field errors
-- [ ] 500 Server errors → Show generic message
+- [x] Network errors
+- [x] 401 Unauthorized → Logout
+- [x] 404 Not Found → Show message
+- [x] 409 Conflict → Show resource in use message
+- [x] 422 Validation errors → Show field errors
+- [x] 500 Server errors → Show generic message
 
 #### 11.2 Error Display
-- [ ] Toast notifications (react-hot-toast veya react-toastify)
-- [ ] Inline form errors
+- [x] Toast notifications (react-hot-toast)
+- [x] Inline form errors
 - [ ] Alert components
 
 ---
 
-### Faz 12: UI/UX İyileştirmeleri
+### Phase 12: UI/UX Improvements
 
 #### 12.1 Loading States
 - [ ] Global loading overlay
 - [ ] Skeleton loaders
-- [ ] Button loading spinners
+- [x] Button loading spinners
 - [ ] Lazy loading
 
 #### 12.2 Responsive Design
-- [ ] Mobile responsive navbar
-- [ ] Responsive tables
-- [ ] Mobile-friendly forms
-- [ ] Hamburger menu
+- [x] Mobile responsive navbar
+- [x] Responsive tables
+- [x] Mobile-friendly forms
+- [x] Hamburger menu
 
 #### 12.3 Accessibility
 - [ ] Keyboard navigation
@@ -477,18 +477,18 @@ const { data, loading, error, execute } = useApi(
 
 ---
 
-### Faz 13: Advanced Features
+### Phase 13: Advanced Features
 
 #### 13.1 Search & Filtering
-- [ ] Debounced search input
-- [ ] Multi-filter support
-- [ ] AND/OR operator toggle
-- [ ] Clear filters button
+- [x] Debounced search input
+- [x] Multi-filter support
+- [x] AND/OR operator toggle
+- [x] Clear filters button
 
 #### 13.2 Pagination
-- [ ] Page size selector (10, 25, 50, 100)
-- [ ] Page navigation
-- [ ] Total count display
+- [x] Page size selector (10, 25, 50, 100)
+- [x] Page navigation
+- [x] Total count display
 - [ ] Jump to page
 
 #### 13.3 Sorting (Optional)
@@ -497,7 +497,7 @@ const { data, loading, error, execute } = useApi(
 
 ---
 
-### Faz 14: Testing (Optional)
+### Phase 14: Testing (Optional)
 
 #### 14.1 Unit Tests
 - [ ] Component tests (React Testing Library)
@@ -511,33 +511,33 @@ const { data, loading, error, execute } = useApi(
 
 ---
 
-### Faz 15: Documentation & Deployment
+### Phase 15: Documentation & Deployment
 
 #### 15.1 Documentation
-- [ ] README.md
-- [ ] Setup instructions
-- [ ] Environment variables guide
-- [ ] API integration notes
+- [x] README.md
+- [x] Setup instructions
+- [x] Environment variables guide
+- [x] API integration notes
 - [ ] Component documentation
 
 #### 15.2 Build & Deploy
-- [ ] Production build configuration
-- [ ] Environment-specific configs
+- [x] Production build configuration
+- [x] Environment-specific configs
 - [ ] Deployment guide (Vercel, Netlify, Docker)
 
 ---
 
-## 🔧 Kurulum Adımları (Proje Hazır Olduğunda)
+## 🔧 Setup Instructions (When Project is Ready)
 
 ```bash
-# 1. Dependencies yükle
+# 1. Install dependencies
 npm install
 
-# 2. Environment variables ayarla
+# 2. Setup environment variables
 cp .env.example .env
-# .env dosyasını düzenle
+# Edit .env file
 
-# 3. Development server başlat
+# 3. Start development server
 npm run dev
 
 # 4. Production build
@@ -549,7 +549,7 @@ npm run preview
 
 ---
 
-## 📦 Gerekli NPM Paketleri
+## 📦 Required NPM Packages
 
 ### Core
 ```bash
@@ -567,7 +567,7 @@ npm install react-hook-form @hookform/resolvers zod
 ### UI & Styling
 ```bash
 npm install -D tailwindcss postcss autoprefixer
-npm install react-hot-toast  # veya react-toastify
+npm install react-hot-toast
 npm install clsx  # className utility
 ```
 
@@ -582,21 +582,21 @@ npm install -D prettier prettier-plugin-tailwindcss
 ### Optional
 ```bash
 npm install react-loading-skeleton  # Skeleton loaders
-npm install react-icons  # Ek iconlar
+npm install react-icons  # Additional icons
 ```
 
 ---
 
-## 🎨 Tailwind CSS Teması
+## 🎨 Tailwind CSS Theme
 
-### Renkler
+### Colors
 ```js
 // tailwind.config.js
 colors: {
   primary: {
     50: '#eff6ff',
     100: '#dbeafe',
-    // ... mavi tonları
+    // ... blue shades
     600: '#2563eb',
     700: '#1d4ed8',
   },
@@ -609,18 +609,18 @@ colors: {
 
 ---
 
-## 🔒 Güvenlik Notları
+## 🔒 Security Notes
 
-- JWT token localStorage'da saklanacak
-- Token expiry kontrolü
-- XSS koruması (React otomatik escape eder)
-- CORS politikası (Backend'de ayarlı)
+- JWT token stored in localStorage
+- Token expiry control
+- XSS protection (React auto-escapes)
+- CORS policy (configured in Backend)
 - Input sanitization
 - API error messages sanitization
 
 ---
 
-## 🚀 Performans Optimizasyonları
+## 🚀 Performance Optimizations
 
 - [ ] React.memo for expensive components
 - [ ] useMemo for expensive calculations
@@ -643,7 +643,7 @@ xl: 1280px  /* Large desktop */
 
 ---
 
-## 🎯 Öncelik Sırası
+## 🎯 Priority Order
 
 ### High Priority (MVP)
 1. Authentication (Login/Logout)
@@ -668,29 +668,29 @@ xl: 1280px  /* Large desktop */
 
 ---
 
-## 📝 Notlar
+## 📝 Notes
 
 - API Base URL: `http://localhost:8080` (development)
-- Tüm API istekleri JWT token gerektirir (auth/login hariç)
-- API error responses standardize edilmiş
+- All API requests require JWT token (except auth/login)
+- API error responses are standardized
 - Pagination: `?page=1&per_page=10`
 - Search: `?query=...&filter=city,tag&operator=AND`
 
 ---
 
-## 🤝 API Entegrasyon Notları
+## 🤝 API Integration Notes
 
 ### Authentication
 - Login endpoint: `POST /auth/login`
 - Body: `{ "username": "admin", "password": "yourpass" }`
 - Response: `{ "token": "jwt_token_here" }`
-- Token kullanımı: `Authorization: Bearer {token}` header'ı
+- Token usage: `Authorization: Bearer {token}` header
 
 ### Error Handling
 - 400: Validation errors
 - 401: Unauthorized (token invalid/missing)
 - 404: Resource not found
-- 409: Resource in use (silme işleminde)
+- 409: Resource in use (during deletion)
 - 422: Business rule violation
 - 500: Server error
 
@@ -709,4 +709,4 @@ xl: 1280px  /* Large desktop */
 
 ---
 
-Bu planlama dokümanı projenin tüm aşamalarını kapsamaktadır. Her faz tamamlandıkça işaretlenebilir ve yeni gereksinimler eklenebilir.
+This planning document covers all phases of the project. Each phase can be marked as completed and new requirements can be added as needed.

@@ -1,8 +1,8 @@
 # Catering Frontend
 
-Modern React + TypeScript + Tailwind CSS ile geliştirilmiş Catering Management sistemi için frontend uygulaması.
+Modern frontend application for Catering Management system built with React + TypeScript + Tailwind CSS.
 
-## 🚀 Teknolojiler
+## 🚀 Technologies
 
 - **React 18** - UI Framework
 - **TypeScript** - Type Safety
@@ -16,10 +16,10 @@ Modern React + TypeScript + Tailwind CSS ile geliştirilmiş Catering Management
 - **Heroicons** - Icons
 - **React Hot Toast** - Notifications
 
-## 📋 Özellikler
+## 📋 Features
 
 - ✅ JWT Authentication
-- ✅ CRUD İşlemleri (Tesisler, Lokasyonlar, Etiketler, Çalışanlar)
+- ✅ CRUD Operations (Facilities, Locations, Tags, Employees)
 - ✅ Pagination
 - ✅ Search & Filtering
 - ✅ Responsive Design
@@ -29,77 +29,77 @@ Modern React + TypeScript + Tailwind CSS ile geliştirilmiş Catering Management
 - ✅ Toast Notifications
 - ✅ Modern UI/UX
 
-## 🐳 Docker ile Kurulum (Önerilen)
+## 🐳 Docker Installation (Recommended)
 
-### Gereksinimler
+### Requirements
 - Docker
 - Docker Compose
 
-### Kurulum Adımları
+### Installation Steps
 
 ```bash
-# 1. Proje klasörüne gidin
+# 1. Navigate to project directory
 cd catering-frontend
 
-# 2. Environment dosyasını oluşturun
+# 2. Create environment file
 cp .env.example .env
 
-# 3. .env dosyasını düzenleyin (gerekirse)
+# 3. Edit .env file (if needed)
 # VITE_API_BASE_URL=http://localhost:8080
 
-# 4. Docker container'ı başlatın
+# 4. Start Docker container
 docker-compose up -d
 
-# 5. Uygulamayı tarayıcıda açın
+# 5. Open application in browser
 # http://localhost:5173
 ```
 
-### Docker Komutları
+### Docker Commands
 
 ```bash
-# Container'ı başlat
+# Start container
 docker-compose up -d
 
-# Logları görüntüle
+# View logs
 docker-compose logs -f frontend
 
-# Container'ı durdur
+# Stop container
 docker-compose down
 
-# Container'a shell ile bağlan
+# Connect to container shell
 docker-compose exec frontend sh
 
-# Dependency yükle (container içinde)
+# Install dependency (inside container)
 docker-compose exec frontend npm install <package-name>
 ```
 
-## 💻 Lokal Kurulum (Docker olmadan)
+## 💻 Local Installation (Without Docker)
 
-### Gereksinimler
+### Requirements
 - Node.js 20+
-- npm veya yarn
+- npm or yarn
 
-### Kurulum
+### Installation
 
 ```bash
-# 1. Dependencies yükle
+# 1. Install dependencies
 npm install
 
-# 2. Environment dosyası oluştur
+# 2. Create environment file
 cp .env.example .env
 
-# 3. .env dosyasını düzenle
+# 3. Edit .env file
 # VITE_API_BASE_URL=http://localhost:8080
 
-# 4. Development server başlat
+# 4. Start development server
 npm run dev
 
-# Uygulama http://localhost:5173 adresinde çalışacak
+# Application will run at http://localhost:5173
 ```
 
 ## 🔧 Environment Variables
 
-`.env` dosyasında aşağıdaki değişkenleri ayarlayın:
+Configure the following variables in `.env` file:
 
 ```env
 # API Base URL
@@ -109,65 +109,65 @@ VITE_API_BASE_URL=http://localhost:8080
 NODE_ENV=development
 ```
 
-## 📝 Kullanılabilir Komutlar
+## 📝 Available Commands
 
 ```bash
-# Development server başlat
+# Start development server
 npm run dev
 
 # Production build
 npm run build
 
-# Production build önizleme
+# Preview production build
 npm run preview
 
 # Linting
 npm run lint
 ```
 
-## 🔐 Giriş Bilgileri
+## 🔐 Login Credentials
 
-Backend API'nizde tanımlı kullanıcı bilgileriyle giriş yapın:
+Log in with user credentials defined in your Backend API:
 
 ```
-Kullanıcı Adı: admin
-Şifre: Backend .env dosyasında LOGIN_PASSWORD olarak tanımlı
+Username: admin
+Password: Defined as LOGIN_PASSWORD in Backend .env file
 ```
 
-## 📱 Sayfa Yapısı
+## 📱 Page Structure
 
 ### Authentication
-- `/login` - Giriş sayfası
+- `/login` - Login page
 
-### Ana Sayfa
-- `/dashboard` - Dashboard (İstatistikler ve son tesisler)
+### Main Page
+- `/dashboard` - Dashboard (Statistics and recent facilities)
 
-### Tesisler
-- `/facilities` - Tesis listesi
-- `/facilities/:id` - Tesis detayı
+### Facilities
+- `/facilities` - Facility list
+- `/facilities/:id` - Facility detail
 
-### Lokasyonlar
-- `/locations` - Lokasyon listesi
+### Locations
+- `/locations` - Location list
 
-### Etiketler
-- `/tags` - Etiket listesi
+### Tags
+- `/tags` - Tag list
 
-### Çalışanlar
-- `/employees` - Çalışan listesi
+### Employees
+- `/employees` - Employee list
 
-## 🏗️ Proje Yapısı
+## 🏗️ Project Structure
 
 ```
 src/
-├── api/                    # API servis katmanı
+├── api/                    # API service layer
 │   ├── client.ts          # Axios instance
 │   ├── auth.service.ts    # Authentication API
 │   ├── facility.service.ts
 │   ├── location.service.ts
 │   ├── tag.service.ts
 │   └── employee.service.ts
-├── components/             # React bileşenleri
-│   ├── common/            # Genel bileşenler
+├── components/             # React components
+│   ├── common/            # Common components
 │   │   ├── Button.tsx
 │   │   ├── Input.tsx
 │   │   ├── Card.tsx
@@ -175,7 +175,7 @@ src/
 │   │   ├── LoadingSpinner.tsx
 │   │   ├── EmptyState.tsx
 │   │   └── Pagination.tsx
-│   └── layout/            # Layout bileşenleri
+│   └── layout/            # Layout components
 │       ├── Layout.tsx
 │       ├── Navbar.tsx
 │       └── Sidebar.tsx
@@ -183,7 +183,7 @@ src/
 │   └── AuthContext.tsx
 ├── hooks/                 # Custom hooks
 │   └── useAuth.ts
-├── pages/                 # Sayfa bileşenleri
+├── pages/                 # Page components
 │   ├── auth/
 │   │   └── Login.tsx
 │   ├── dashboard/
@@ -216,27 +216,27 @@ src/
 
 ## 🎨 Tailwind CSS
 
-Proje, özelleştirilmiş Tailwind CSS yapılandırması kullanır:
+The project uses customized Tailwind CSS configuration:
 
-- **Primary Color:** Mavi tonları
+- **Primary Color:** Blue shades
 - **Responsive Breakpoints:** sm, md, lg, xl, 2xl
-- **Custom Utilities:** btn, input, card sınıfları
+- **Custom Utilities:** btn, input, card classes
 
-## 🔗 API Entegrasyonu
+## 🔗 API Integration
 
-Uygulama, Catering API ile entegre çalışır:
+Application integrates with Catering API:
 
-- **Base URL:** `http://localhost:8080` (varsayılan)
+- **Base URL:** `http://localhost:8080` (default)
 - **Authentication:** JWT Bearer Token
-- **Headers:** Otomatik olarak Authorization header'ı eklenir
-- **Error Handling:** 401 hatalarında otomatik logout
+- **Headers:** Authorization header added automatically
+- **Error Handling:** Auto logout on 401 errors
 
-### API İstekleri
+### API Requests
 
-Tüm API istekleri `src/api/` klasöründeki servisler üzerinden yapılır:
+All API requests are made through services in `src/api/` directory:
 
 ```typescript
-// Örnek kullanım
+// Example usage
 import facilityService from '@/api/facility.service'
 
 const facilities = await facilityService.getFacilities(1, 10)
@@ -246,35 +246,35 @@ await facilityService.createFacility(data)
 
 ## 🚨 Error Handling
 
-- API hataları toast notification ile gösterilir
-- Form validation hataları inline gösterilir
-- 401 hataları otomatik logout yapar
-- Network hataları kullanıcı dostu mesajlarla gösterilir
+- API errors are displayed with toast notifications
+- Form validation errors are displayed inline
+- 401 errors trigger automatic logout
+- Network errors are displayed with user-friendly messages
 
 ## 🎯 State Management
 
 - **Global State:** React Context API (Authentication)
 - **Local State:** useState hooks
 - **Form State:** React Hook Form
-- **Server State:** API calls ile direkt yönetim
+- **Server State:** Direct management via API calls
 
 ## 📦 Build & Deploy
 
 ### Production Build
 
 ```bash
-# Docker ile
+# With Docker
 docker-compose exec frontend npm run build
 
-# Lokal
+# Local
 npm run build
 ```
 
-Build dosyaları `dist/` klasöründe oluşturulur.
+Build files are created in `dist/` directory.
 
 ### Deploy
 
-Build edilen dosyalar herhangi bir static hosting servisine deploy edilebilir:
+Built files can be deployed to any static hosting service:
 
 - Vercel
 - Netlify
@@ -282,53 +282,53 @@ Build edilen dosyalar herhangi bir static hosting servisine deploy edilebilir:
 - AWS S3 + CloudFront
 - Nginx
 
-## 🔄 Backend ile Birlikte Çalıştırma
+## 🔄 Running with Backend
 
-1. **Backend'i başlatın:**
+1. **Start Backend:**
 ```bash
 cd /path/to/Catering-API
 docker-compose up -d
 ```
 
-2. **Frontend'i başlatın:**
+2. **Start Frontend:**
 ```bash
 cd /path/to/catering-frontend
 docker-compose up -d
 ```
 
-3. **Tarayıcıda açın:**
+3. **Open in browser:**
 - Frontend: http://localhost:5173
 - Backend API: http://localhost:8080
 - phpMyAdmin: http://localhost:8081
 
 ## 🐛 Troubleshooting
 
-### Port zaten kullanımda
+### Port already in use
 ```bash
-# Docker container'ı durdurun
+# Stop Docker container
 docker-compose down
 
-# Portu kullanan process'i bulun
+# Find process using the port
 lsof -i :5173
 
-# Farklı bir port kullanın (docker-compose.yml'de değiştirin)
+# Use a different port (change in docker-compose.yml)
 ```
 
-### API bağlantı hatası
-- Backend API'nin çalıştığından emin olun
-- `.env` dosyasında `VITE_API_BASE_URL` değerini kontrol edin
-- CORS ayarlarını backend'de kontrol edin
+### API connection error
+- Ensure Backend API is running
+- Check `VITE_API_BASE_URL` value in `.env` file
+- Check CORS settings in backend
 
-### Dependencies yüklenemiyor
+### Dependencies installation fails
 ```bash
-# Node modules'ü temizle
+# Clean node modules
 rm -rf node_modules package-lock.json
 
-# Yeniden yükle
+# Reinstall
 npm install
 ```
 
-## 📚 Ek Kaynaklar
+## 📚 Additional Resources
 
 - [React Documentation](https://react.dev)
 - [Vite Documentation](https://vitejs.dev)
@@ -336,30 +336,30 @@ npm install
 - [React Router](https://reactrouter.com)
 - [React Hook Form](https://react-hook-form.com)
 
-## 📄 Lisans
+## 📄 License
 
-Bu proje eğitim amaçlı geliştirilmiştir.
+This project is developed for educational purposes.
 
-## 🤝 Katkıda Bulunma
+## 🤝 Contributing
 
-1. Projeyi fork edin
-2. Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
-3. Değişikliklerinizi commit edin (`git commit -m 'Add amazing feature'`)
-4. Branch'inizi push edin (`git push origin feature/amazing-feature`)
-5. Pull Request oluşturun
+1. Fork the project
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push your branch (`git push origin feature/amazing-feature`)
+5. Create a Pull Request
 
-## 📞 İletişim
+## 📞 Contact
 
-Herhangi bir sorunuz veya öneriniz varsa issue açabilirsiniz.
+Feel free to open an issue for any questions or suggestions.
 
 ---
 
-**Geliştirme Notları:**
+**Development Notes:**
 
-- Tüm componentler TypeScript ile yazılmıştır
-- Form validation Zod schema ile yapılır
-- API error handling merkezi olarak yönetilir
-- Responsive design mobile-first yaklaşımıyla yapılmıştır
-- Kod style guide için ESLint kullanılır
+- All components are written in TypeScript
+- Form validation is done with Zod schema
+- API error handling is managed centrally
+- Responsive design follows mobile-first approach
+- ESLint is used for code style guide
 
-**İyi Kodlamalar! 🚀**
+**Happy Coding! 🚀**
