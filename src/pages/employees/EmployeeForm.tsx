@@ -15,6 +15,40 @@ interface EmployeeFormProps {
   onCancel: () => void
 }
 
+interface AddressFields {
+  street: string
+  houseNumber: string
+  postcode: string
+  city: string
+  country: string
+}
+
+// Parse address string into separate fields
+const parseAddress = (address?: string): AddressFields => {
+  if (!address) {
+    return { street: '', houseNumber: '', postcode: '', city: '', country: '' }
+  }
+
+  // Format: "Street HouseNumber, Postcode City, Country"
+  const parts = address.split(',').map(p => p.trim())
+
+  if (parts.length >= 3) {
+    const streetParts = parts[0].split(' ')
+    const houseNumber = streetParts.pop() || ''
+    const street = streetParts.join(' ')
+
+    const cityParts = parts[1].split(' ')
+    const postcode = cityParts[0] || ''
+    const city = cityParts.slice(1).join(' ')
+
+    const country = parts[2] || ''
+
+    return { street, houseNumber, postcode, city, country }
+  }
+
+  return { street: '', houseNumber: '', postcode: '', city: '', country: '' }
+}
+
 export default function EmployeeForm({
   employee,
   facilities,
@@ -22,7 +56,9 @@ export default function EmployeeForm({
   onCancel,
 }: EmployeeFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
-
+  const [addressFields, setAddressFields] = useState<AddressFields>(
+    parseAddress(employee?.address)
+  )
 
   const {
     register,
@@ -59,9 +95,20 @@ export default function EmployeeForm({
   const onSubmit = async (data: EmployeeFormData) => {
     try {
       setIsSubmitting(true)
+
+      // Combine address fields
+      const address = [
+        `${addressFields.street} ${addressFields.houseNumber}`.trim(),
+        `${addressFields.postcode} ${addressFields.city}`.trim(),
+        addressFields.country
+      ]
+        .filter(part => part)
+        .join(', ')
+
       const formData = {
         ...data,
         facility_ids: selectedFacilities,
+        address: address || undefined,
       }
 
       if (employee) {
@@ -115,7 +162,37 @@ export default function EmployeeForm({
           )}
         </div>
 
-        <Input label="Address" {...register('address')} />
+        <div className="grid grid-cols-2 gap-4">
+          <Input
+            label="Street Name"
+            value={addressFields.street}
+            onChange={(e) => setAddressFields({ ...addressFields, street: e.target.value })}
+          />
+          <Input
+            label="House Number"
+            value={addressFields.houseNumber}
+            onChange={(e) => setAddressFields({ ...addressFields, houseNumber: e.target.value })}
+          />
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <Input
+            label="Postcode"
+            value={addressFields.postcode}
+            onChange={(e) => setAddressFields({ ...addressFields, postcode: e.target.value })}
+          />
+          <Input
+            label="City"
+            value={addressFields.city}
+            onChange={(e) => setAddressFields({ ...addressFields, city: e.target.value })}
+          />
+        </div>
+
+        <Input
+          label="Country"
+          value={addressFields.country}
+          onChange={(e) => setAddressFields({ ...addressFields, country: e.target.value })}
+        />
 
         <Input label="Email" type="email" {...register('email')} />
 
