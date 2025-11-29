@@ -24,8 +24,8 @@ export const employeeService = {
   },
 
   async getEmployeesByFacility(facilityId: number): Promise<Employee[]> {
-    const response = await apiClient.get<Employee[]>(`/employees/facility/${facilityId}`)
-    return response.data
+    const response = await apiClient.get<{ facility_id: number, employees: Employee[], pagination: any }>(`/facilities/${facilityId}/employees`)
+    return response.data.employees
   },
 
   async createEmployee(data: EmployeeFormData): Promise<Employee> {

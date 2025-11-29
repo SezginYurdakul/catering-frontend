@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { ArrowLeftIcon, PencilIcon, TrashIcon } from '@heroicons/react/24/outline'
+import { ArrowLeftIcon, PencilIcon, TrashIcon, ChevronDownIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 import Card from '@/components/common/Card'
 import Button from '@/components/common/Button'
 import LoadingSpinner from '@/components/common/LoadingSpinner'
@@ -21,6 +21,7 @@ export default function FacilityDetail() {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const [isDeleting, setIsDeleting] = useState(false)
+  const [isEmployeesOpen, setIsEmployeesOpen] = useState(false)
 
   useEffect(() => {
     if (id) {
@@ -98,9 +99,9 @@ export default function FacilityDetail() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Facility Info */}
-        <Card title="Facility Information">
+      <Card title="Facility Information">
+        <div className="space-y-6">
+          {/* Facility Details */}
           <div className="space-y-4">
             <div>
               <label className="text-sm text-gray-600">Facility Name</label>
@@ -140,26 +141,69 @@ export default function FacilityDetail() {
               </div>
             </div>
           </div>
-        </Card>
 
-        {/* Employees */}
-        <Card title="Employees">
-          {employees.length === 0 ? (
-            <p className="text-gray-500 text-center py-4">No employees at this facility.</p>
-          ) : (
-            <div className="space-y-3">
-              {employees.map((employee) => (
-                <div key={employee.id} className="p-3 bg-gray-50 rounded-lg">
-                  <p className="font-medium text-gray-900">{employee.name}</p>
-                  {employee.address && (
-                    <p className="text-sm text-gray-600">{employee.address}</p>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-        </Card>
-      </div>
+          {/* Divider */}
+          <div className="border-t border-gray-200"></div>
+
+          {/* Employees - Collapsible */}
+          <div>
+            <button
+              onClick={() => setIsEmployeesOpen(!isEmployeesOpen)}
+              className="w-full flex items-center gap-3 py-2 hover:bg-gray-50 rounded-lg transition-colors -mx-2 px-2"
+            >
+              {isEmployeesOpen ? (
+                <ChevronDownIcon className="h-5 w-5 text-gray-500" />
+              ) : (
+                <ChevronRightIcon className="h-5 w-5 text-gray-500" />
+              )}
+              <h3 className="text-lg font-semibold text-gray-900">
+                Employees ({employees.length})
+              </h3>
+            </button>
+
+            {isEmployeesOpen && (
+              <div className="mt-4">
+                {employees.length === 0 ? (
+                  <p className="text-gray-500 text-center py-4">No employees at this facility.</p>
+                ) : (
+                  <div className="overflow-x-auto -mx-6">
+                    <table className="min-w-full divide-y divide-gray-200">
+                      <thead className="bg-gray-50">
+                        <tr>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Name
+                          </th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Contact
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="bg-white divide-y divide-gray-200">
+                        {employees.map((employee) => (
+                          <tr key={employee.id} className="hover:bg-gray-50">
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <div className="text-sm font-medium text-gray-900">{employee.name}</div>
+                              {employee.address && (
+                                <div className="text-xs text-gray-500">{employee.address}</div>
+                              )}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <div className="text-sm text-gray-900">{employee.phone}</div>
+                              {employee.email && (
+                                <div className="text-xs text-gray-500">{employee.email}</div>
+                              )}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </Card>
 
       {/* Edit Form Modal */}
       {isFormOpen && (

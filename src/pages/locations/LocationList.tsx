@@ -9,10 +9,13 @@ import locationService from '@/api/location.service'
 import { Location } from '@/types/location.types'
 import toast from 'react-hot-toast'
 import LocationForm from './LocationForm'
+import Pagination from '@/components/common/Pagination'
 
 export default function LocationList() {
   const [locations, setLocations] = useState<Location[]>([])
   const [loading, setLoading] = useState(true)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null)
@@ -20,13 +23,14 @@ export default function LocationList() {
 
   useEffect(() => {
     loadLocations()
-  }, [])
+  }, [currentPage])
 
   const loadLocations = async () => {
     try {
       setLoading(true)
-      const data = await locationService.getLocations()
+      const { data, pagination } = await locationService.getLocations(currentPage, 10)
       setLocations(data)
+      setTotalPages(pagination?.total_pages || 1)
     } catch (error: any) {
       toast.error(error.message || 'Failed to load locations')
     } finally {
@@ -103,11 +107,12 @@ export default function LocationList() {
               <table className="min-w-full divide-y divide-gray-200">
                 <thead>
                   <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">City</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Address</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Zip Code</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
-                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                  <th className="px-6 py-3 text-left text-sm font-bold underline text-gray-700 uppercase tracking-wider">City</th>
+                  <th className="px-6 py-3 text-left text-sm font-bold underline text-gray-700 uppercase tracking-wider">Address</th>
+                  <th className="px-6 py-3 text-left text-sm font-bold underline text-gray-700 uppercase tracking-wider">Zip Code</th>
+                  <th className="px-6 py-3 text-left text-sm font-bold underline text-gray-700 uppercase tracking-wider">Country Code</th>
+                  <th className="px-6 py-3 text-left text-sm font-bold underline text-gray-700 uppercase tracking-wider">Phone</th>
+                  <th className="px-6 py-3 text-right text-sm font-bold underline text-gray-700 uppercase tracking-wider">Actions</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -121,6 +126,9 @@ export default function LocationList() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm text-gray-600">{location.zip_code}</div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-600">{location.country_code}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm text-gray-600">{location.phone_number}</div>
@@ -183,6 +191,12 @@ export default function LocationList() {
                 </div>
               ))}
             </div>
+            {/* Pagination */}
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
           </>
         )}
       </Card>

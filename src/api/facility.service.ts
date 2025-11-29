@@ -26,8 +26,8 @@ export const facilityService = {
   },
 
   async getFacilityById(id: number): Promise<Facility> {
-    const response = await apiClient.get<Facility>(`/facilities/${id}`)
-    return response.data
+    const response = await apiClient.get<{ facility: Facility }>(`/facilities/${id}`)
+    return response.data.facility
   },
 
   async searchFacilities(params: FacilitySearchParams): Promise<PaginatedResponse<Facility>> {

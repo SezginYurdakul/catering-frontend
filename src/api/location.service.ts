@@ -2,9 +2,19 @@ import apiClient from './client'
 import { Location, LocationFormData } from '@/types/location.types'
 
 export const locationService = {
-  async getLocations(): Promise<Location[]> {
-    const response = await apiClient.get<{ locations: Location[] }>('/locations')
-    return response.data.locations
+  async getLocations(page: number = 1, perPage: number = 10): Promise<{ data: Location[], pagination: any }> {
+    const response = await apiClient.get<{ locations: Location[], pagination: any }>('/locations', {
+      params: { page, per_page: perPage },
+    })
+    return {
+      data: response.data.locations,
+      pagination: {
+        current_page: response.data.pagination.current_page,
+        per_page: response.data.pagination.per_page,
+        total: response.data.pagination.total_items,
+        total_pages: response.data.pagination.total_pages,
+      },
+    }
   },
 
   async getLocationById(id: number): Promise<Location> {

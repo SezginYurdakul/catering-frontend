@@ -33,16 +33,16 @@ export default function Dashboard() {
 
   const loadDashboardData = async () => {
     try {
-      const [facilitiesData, locations, tags, employeesData] = await Promise.all([
+      const [facilitiesData, locationsData, tags, employeesData] = await Promise.all([
         facilityService.getFacilities(1, 5).catch(() => ({ data: [], pagination: { total: 0 } })),
-        locationService.getLocations().catch(() => []),
+        locationService.getLocations(1, 5).catch(() => ({ data: [], pagination: { total: 0 } })),
         tagService.getTags().catch(() => []),
         employeeService.getEmployees(1, 10).catch(() => ({ data: [], pagination: { total: 0 } })),
       ])
 
       setStats({
         facilities: facilitiesData?.pagination?.total || 0,
-        locations: locations?.length || 0,
+        locations: locationsData?.pagination?.total || 0,
         tags: tags?.length || 0,
         employees: employeesData?.pagination?.total || 0,
       })

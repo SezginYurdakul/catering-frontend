@@ -49,11 +49,11 @@ export default function FacilityForm({ facility, onSuccess, onCancel }: Facility
 
   const loadFormData = async () => {
     try {
-      const [locationsData, tagsData] = await Promise.all([
+      const [locationsResult, tagsData] = await Promise.all([
         locationService.getLocations(),
         tagService.getTags(),
       ])
-      setLocations(locationsData)
+      setLocations(locationsResult.data)
       setTags(tagsData)
     } catch (error: any) {
       toast.error('Failed to load form data')
