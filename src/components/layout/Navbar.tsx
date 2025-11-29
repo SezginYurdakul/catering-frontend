@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline'
+import { ArrowRightStartOnRectangleIcon } from '@heroicons/react/24/outline'
 import { useAuth } from '@/hooks/useAuth'
 import Button from '../common/Button'
 
@@ -21,8 +21,8 @@ export default function Navbar() {
           </div>
           <div className="flex items-center gap-4">
             <Button variant="secondary" size="sm" onClick={handleLogout}>
-              <ArrowRightOnRectangleIcon className="h-5 w-5 mr-2" />
-              Çıkış Yap
+              <ArrowRightStartOnRectangleIcon className="h-5 w-5 mr-2" />
+              Logout
             </Button>
           </div>
         </div>
