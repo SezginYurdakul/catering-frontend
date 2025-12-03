@@ -3,6 +3,10 @@
 # Stage 1: Build the application
 FROM node:20-alpine AS builder
 
+# Build argument for API URL
+ARG VITE_API_BASE_URL
+ENV VITE_API_BASE_URL=${VITE_API_BASE_URL}
+
 WORKDIR /app
 
 # Copy package files
@@ -14,7 +18,7 @@ RUN npm install
 # Copy source code
 COPY . .
 
-# Build the application
+# Build the application (uses VITE_API_BASE_URL env var)
 RUN npm run build
 
 # Stage 2: Serve with nginx

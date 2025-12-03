@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: catering_frontend
+    container_name: catering_frontend_dev
     ports:
       - "5173:5173"
     volumes:
@@ -15,7 +15,7 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
-      - VITE_API_BASE_URL=https://sezginyurdakul.com/catering_api
+      - VITE_API_BASE_URL=http://localhost:8080/catering_api
     stdin_open: true
     tty: true
     networks:
@@ -23,4 +23,5 @@ services:
 
 networks:
   catering-network:
-    driver: bridge
+    name: catering-api_catering_network
+    external: true

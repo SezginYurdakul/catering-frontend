@@ -5,6 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.prod
+      args:
+        - VITE_API_BASE_URL=https://sezginyurdakul.com/catering_api
     container_name: catering_frontend_prod
     restart: unless-stopped
     ports:
